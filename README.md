@@ -16,10 +16,11 @@ Course Link: [CS61B Sp21](https://sp21.datastructur.es)
 
 ## Projects
 
-| PROJECT                    | DEMO | CODE | DATE | DONE | AUTOGRADER |
-| -------------------------- | :--: | :--: | :--: | :--: | :--------: |
+| PROJECT                    |  CODE | DATE | DONE | AUTOGRADER |
+| -------------------------- |  :--: | :--: | :--: | :--------: |
 | Project 0: 2048            |
 | Project 1: Data Structures |
+| Project 2: Gitlet          |
 | Project 3: Game Sharing    |
 
 ## Labs

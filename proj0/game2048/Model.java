@@ -20,6 +20,9 @@ public class Model extends Observable {
     /** Use to check the adjacent tiles in board */
     private static final int[] dx = {1, -1, 0, 0};
     private static final int[] dy = {0, 0, 1, -1};
+    private static final int COLMERGE = 1;
+    private static final int COLMOVE = 2;
+    private boolean checkChanged = false;
 
     /* Coordinate System: column C, row R of the board (where row 0,
      * column 0 is the lower-left corner of the board) will correspond
@@ -117,12 +120,66 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
+        board.setViewingPerspective(side);
+        for (int i = 0; i < board.size(); i++){
+            columnMerge(i);
+            columnMove(i);
+        }
+        board.setViewingPerspective(Side.NORTH);
+        changed = checkChanged;
 
         checkGameOver();
         if (changed) {
             setChanged();
         }
         return changed;
+    }
+
+    /** Merge the column with same tile*/
+    private void columnMerge(int c){
+        for (int r = board.size() - 1; r > 0; r--){
+           if(board.tile(c, r) == null){
+               continue;
+           }
+           checkNextIndex(r, c, COLMERGE);
+       }
+    }
+    /** Move for final state in specific column*/
+    private void columnMove(int c){
+        for (int r = board.size() - 1; r > 0; r--){
+            if (board.tile(c, r) != null){
+                continue;
+            }
+            checkNextIndex(r, c, COLMOVE);
+        }
+    }
+
+    private void checkNextIndex(int r, int c, int opt){
+        int adjR = r - 1;
+        // jump for the next one to compare
+        while (board.tile(c, adjR) == null && adjR > 0){
+            adjR -= 1;
+        }
+
+        // Not find the next one
+        if (board.tile(c, adjR) == null){
+            return;
+        }
+
+        if (opt == COLMERGE){
+            if (board.tile(c, r).value() == board.tile(c, adjR).value()){
+                Tile t = board.tile(c, adjR);
+                board.move(c, r, t);
+                score += board.tile(c, r).value();
+                checkChanged = true;
+            }
+        } else{
+            System.out.println(board);
+            Tile t = board.tile(c, adjR);
+            board.move(c, r, t);
+            checkChanged = true;
+        }
+
     }
 
     /** Checks if the game is over and sets the gameOver variable

@@ -17,6 +17,10 @@ public class Model extends Observable {
     /** True iff game is ended. */
     private boolean gameOver;
 
+    /** Use to check the adjacent tiles in board */
+    private static final int[] dx = {1, -1, 0, 0};
+    private static final int[] dy = {0, 0, 1, -1};
+
     /* Coordinate System: column C, row R of the board (where row 0,
      * column 0 is the lower-left corner of the board) will correspond
      * to board.tile(c, r).  Be careful! It works like (x, y) coordinates.
@@ -171,7 +175,38 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        if (emptySpaceExists(b)){
+            return true;
+        } else{
+            for (int i = 0; i < b.size(); i++){
+                for (int j = 0; j < b.size(); j++){
+                    if( hasValidMove(b, i, j)){
+                        return true;
+                    }
+                }
+            }
+        }
+
         return false;
+    }
+
+    /** Return true if there exist valid move */
+    private static boolean hasValidMove(Board b, int i, int j){
+        for(int k = 0; k < 4; k++){
+            int adjX = i + dx[k];
+            int adjY = j + dy[k];
+            if (!isValid(b, adjX, adjY)){
+                continue;
+            }
+            if (b.tile(i, j).value() == b.tile(adjX, adjY).value()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isValid(Board b, int x, int y){
+        return (x > 0 && x < b.size() && y > 0 && y < b.size());
     }
 
 

@@ -1,6 +1,6 @@
 # CS 61B Data Structures Spring 2021
 
-Thanks for Josh Hug and TAs!
+The course is lectured by Josh Hug at UC Berkeley !
 
 ## Getting Started
 

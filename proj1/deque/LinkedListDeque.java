@@ -55,14 +55,24 @@ public class LinkedListDeque<T> {
         System.out.println();
     }
 
-//    public T removeFirst() {
-//
-//    }
-//
-//    public T removeLast() {
-//
-//    }
-//
+    public T removeFirst() {
+        size -= 1;
+        T removeItem = sentinel.next.item;
+        sentinel.next = sentinel.next.next;
+        sentinel.next.prev = sentinel;
+
+        return removeItem;
+    }
+
+    public T removeLast() {
+        size -= 1;
+        T removeItem = sentinel.prev.item;
+        sentinel.prev = sentinel.prev.prev;
+        sentinel.prev.next = sentinel;
+
+        return removeItem;
+    }
+
 //    public T get(int index) {
 //
 //    }

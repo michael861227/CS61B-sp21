@@ -166,4 +166,21 @@ public class LinkedListDequeTest {
         assertNull("The value should be null", lld1.getRecursive(3));
         assertNull("The value should be null", lld1.getRecursive(-2));
     }
+
+    @Test
+    public void equalTest() {
+        LinkedListDeque<String> a = new LinkedListDeque<>();
+        LinkedListDeque<String> b = new LinkedListDeque<>();
+
+        a.addLast("Hi, ");
+        a.addLast("my");
+        a.addLast("friend");
+
+        b.addLast("Hi, ");
+        b.addLast("my");
+        b.addLast("friend");
+
+        assertEquals("Two object's content should be the same", a, b);
+
+    }
 }

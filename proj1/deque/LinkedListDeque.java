@@ -117,13 +117,13 @@ public class LinkedListDeque<T> implements Iterable<T> {
     }
 
     public Iterator<T> iterator() {
-        return new LinkedListDequeIterator();
+        return new DequeIterator();
     }
 
-    private class LinkedListDequeIterator implements Iterator<T> {
+    private class DequeIterator implements Iterator<T> {
         private int pos;
 
-        public LinkedListDequeIterator() {
+        public DequeIterator() {
             pos = 0;
         }
         public boolean hasNext() {
@@ -136,9 +136,31 @@ public class LinkedListDeque<T> implements Iterable<T> {
         }
     }
 
-//    public boolean equals(Object o) {
-//
-//    }
+    public boolean contains(T item) {
+        for (int i = 0; i < size; i++) {
+            if (get(i).equals(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o instanceof LinkedListDeque lld2) {
+            if (this.size() != lld2.size()) {
+                return false;
+            }
+            for (T x: this) {
+                if(!lld2.contains(x)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         LinkedListDeque<Integer> a = new LinkedListDeque<>();

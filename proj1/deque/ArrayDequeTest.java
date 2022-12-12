@@ -143,6 +143,23 @@ public class ArrayDequeTest {
     }
     @Test
     public void equalTest() {
+        ArrayDeque<String> a = new ArrayDeque<>();
+        ArrayDeque<String> b = new ArrayDeque<>();
 
+        a.addLast("Hi, ");
+        a.addLast("my");
+        a.addLast("friend");
+        a.addLast(", ");
+        a.addLast("Good");
+        a.addLast("Day!");
+
+        b.addLast("Hi, ");
+        b.addLast("my");
+        b.addLast("friend");
+        b.addLast(", ");
+        b.addLast("Good");
+        b.addLast("Day!");
+
+        assertEquals("Two object's content should be the same", a, b);
     }
 }

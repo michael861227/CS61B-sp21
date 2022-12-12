@@ -6,6 +6,8 @@ import net.sf.saxon.ma.arrays.ArrayFunctionSet;
 import org.checkerframework.checker.units.qual.A;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 public class ArrayDequeTest {
     @Test
     public void addIsEmptySizeTest() {
@@ -113,6 +115,32 @@ public class ArrayDequeTest {
 
     }
 
+    @Test
+    public void iteratorTest() {
+        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ad1.addFirst(4);
+        ad1.addFirst(5);
+        ad1.addFirst(6);
+        ad1.addFirst(7);
+
+        for (Integer x : ad1) {
+            System.out.print(x);
+            System.out.print(" ");
+        }
+        System.out.println();
+
+        ArrayDeque<Integer> ad2 = new ArrayDeque<>();
+        ad2.addLast(4);
+        ad2.addLast(5);
+        ad2.addLast(6);
+        ad2.addLast(7);
+        ad2.addLast(8);
+
+        for (Integer x : ad2) {
+            System.out.print(x);
+            System.out.print(" ");
+        }
+    }
     @Test
     public void equalTest() {
 

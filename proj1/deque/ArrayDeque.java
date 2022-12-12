@@ -6,12 +6,14 @@ package deque;
  size: The number of items in the list should be size.
 */
 
-public class ArrayDeque<T> {
+import java.util.Iterator;
+
+public class ArrayDeque<T> implements Iterable<T>{
     private int size, nextFirst, nextLast;
     private T[] items;
 
     public ArrayDeque() {
-        items = (T[]) new Object[4];
+        items = (T[]) new Object[8];
         size = 0;
         nextFirst = items.length / 2 - 1;
         nextLast = items.length / 2;
@@ -133,11 +135,38 @@ public class ArrayDeque<T> {
         }
         return items[index];
     }
-    /*
-    public Iterator<T> iterator() {
 
+    /* return an iterator into this ArrayDeque class */
+    public Iterator<T> iterator() {
+        return new DequeIterator();
     }
 
+    private class DequeIterator implements Iterator<T> {
+        private int count, pos;
+        public DequeIterator() {
+            count = 0;
+            pos = 0;
+        }
+        public boolean hasNext() {
+            return count < size;
+        }
+
+        public T next() {
+            while (pos < items.length && items[pos] == null) {
+                pos += 1;
+            }
+
+            if (pos < items.length) {
+                T returnItem = items[pos];
+                pos += 1;
+                count += 1;
+                return returnItem;
+            }
+
+            return null;
+        }
+    }
+    /*
     public boolean equals(Object o) {
 
     }

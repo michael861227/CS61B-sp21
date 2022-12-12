@@ -11,7 +11,7 @@ public class ArrayDeque<T> {
     private T[] items;
 
     public ArrayDeque() {
-        items = (T[]) new Object[8];
+        items = (T[]) new Object[4];
         size = 0;
         nextFirst = items.length / 2 - 1;
         nextLast = items.length / 2;
@@ -43,14 +43,26 @@ public class ArrayDeque<T> {
 
     private void resize(int capacity) {
         T[] temp = (T[]) new Object[capacity];
-        System.arraycopy(items, 0, temp, 0, nextFirst + 1);
-
-        int lastTotal = size - nextLast;
-        System.arraycopy(items, nextLast, temp, capacity - lastTotal, lastTotal);
-        items = temp;
-
-        nextLast = nextFirst + 1;
-        nextFirst = capacity - lastTotal - 1;
+        // ArrayDeque is not fulled
+        if (items[nextLast] == null) {
+            int startPos = nextFirst + 1;
+            if (startPos >= items.length) {
+                startPos = 0;
+            }
+            System.arraycopy(items, startPos, temp, 0, size);
+            items = temp;
+            nextLast = size;
+            nextFirst = items.length - 1;
+        }
+        // ArrayDeque is fulled
+        else {
+            int lastTotal = size - nextLast;
+            System.arraycopy(items, nextLast, temp, 0, lastTotal);
+            System.arraycopy(items, 0, temp, lastTotal, nextFirst + 1);
+            items = temp;
+            nextLast = size;
+            nextFirst = items.length - 1;
+        }
     }
 
 
@@ -86,7 +98,7 @@ public class ArrayDeque<T> {
         size -= 1;
 
         // Check for ArrayDeque's usage factor
-        if (items.length > 16 && (double)size / items.length < 0.25) {
+        if (items.length >= 16 && (double)size / items.length < 0.25) {
             resize(items.length / 2);
         }
 

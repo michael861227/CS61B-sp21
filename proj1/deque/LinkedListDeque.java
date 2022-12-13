@@ -269,15 +269,4 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return false;
     }
     */
-
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> a = new LinkedListDeque<>();
-        a.addFirst(10);
-        a.addFirst(20);
-        a.addLast(30);
-
-        for(int x: a) {
-            System.out.println(x);
-        }
-    }
 }

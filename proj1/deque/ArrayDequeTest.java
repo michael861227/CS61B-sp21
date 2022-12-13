@@ -108,10 +108,10 @@ public class ArrayDequeTest {
         ad1.addLast(0);
         ad1.addFirst(30);
 
-        assertEquals("Should have the same value", 30, (double)ad1.get(3), 0.0);
-        assertEquals("Should have the same value", 10, (double)ad1.get(4), 0.0);
-        assertNull("The value should be null", ad1.get(1));
-        assertNull("The value should be null", ad1.get(2));
+        assertEquals("Should have the same value", 30, (double)ad1.get(0), 0.0);
+        assertEquals("Should have the same value", 10, (double)ad1.get(1), 0.0);
+        assertNull("The value should be null", ad1.get(-1));
+        assertNull("The value should be null", ad1.get(5));
 
     }
 

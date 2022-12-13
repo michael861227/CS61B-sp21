@@ -174,7 +174,11 @@ public class ArrayDeque<T> implements Iterable<T>{
         if (index < 0 || index >= items.length) {
             return null;
         }
-        return items[index];
+        int arrayIndex = index + nextFirst + 1;
+        if (arrayIndex >= items.length) {
+            arrayIndex -= items.length;
+        }
+        return items[arrayIndex];
     }
 
     /**
@@ -214,19 +218,6 @@ public class ArrayDeque<T> implements Iterable<T>{
     }
 
     /**
-     * @param item
-     * @return whether the target item is in the deque
-     */
-    public boolean contain(T item) {
-        for (T x : this) {
-            if (x.equals(item)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * @param o
      * @return whether the two object are equal
      */
@@ -245,11 +236,9 @@ public class ArrayDeque<T> implements Iterable<T>{
 
         ArrayDeque<T> other = (ArrayDeque<T>) o;
 
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null) {
-                if (!items[i].equals(other.items[i])) {
-                    return false;
-                }
+        for (int i = 0; i < size; i++) {
+            if (!this.get(i).equals(other.get(i))) {
+                return false;
             }
         }
         return true;
@@ -280,8 +269,4 @@ public class ArrayDeque<T> implements Iterable<T>{
     }
     */
 
-
-    public static void main(String[] args) {
-        ArrayDeque<Integer> ad = new ArrayDeque<>();
-    }
 }

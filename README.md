@@ -8,6 +8,8 @@ Course Link: [CS61B Sp21](https://sp21.datastructur.es/)
 
 Skeleton Code: [Berkeley-CS61B/skeleton-sp21](https://github.com/Berkeley-CS61B/skeleton-sp21)
 
+Lecture Code: [Berkeley-CS61B/lectureCode-fa22](https://github.com/Berkeley-CS61B/lectureCode-fa22)
+
 | AUTOGRADER  | [Gradescope](https://www.gradescope.com/) |
 | ----------- | ----------------------------------------- |
 | COURSE CODE | Spring 2021 : **MB7ZPY**                  |
@@ -21,7 +23,7 @@ Skeleton Code: [Berkeley-CS61B/skeleton-sp21](https://github.com/Berkeley-CS61B/
 ### Projects
 
 | PROJECT                                                                                          |           CODE            |   DATE   |       STATUS       |  AUTOGRADER SCORE   |
-| ------------------------------------------------------------------------------------------------ | :-----------------------: | :------: | :----------------: | :-----------------: |
+| ------------------------------------------------------------------------------------------------ | :-----------------------: | :------: | :----------------: | :-----------------: | --- |
 | [Project 0: 2048](https://sp21.datastructur.es/materials/proj/proj0/proj0)                       |  [:link: link](./proj0/)  | 22/08/16 | :white_check_mark: | **_640.0 / 640.0_** |
 | [Project 1: Data Structures](https://sp21.datastructur.es/materials/proj/proj1/proj1)            |  [:link: link](./proj1/)  |          |                    |                     |
 | [Project 1 Extra Credit: Autograding](https://sp21.datastructur.es/materials/proj/proj1/proj1ec) | [:link: link](./proj1ec/) |          |                    |                     |
@@ -57,7 +59,7 @@ Skeleton Code: [Berkeley-CS61B/skeleton-sp21](https://github.com/Berkeley-CS61B/
 | Lab 12: Getting Started on Project 3 |                    |                     |
 | HW2: Conceptual Review               |                    |                     |
 | Project 0: 2048                      | :white_check_mark: | **_640.0 / 640.0_** |
-| Project 1: Checkpoint                |                    |                     |
+| Project 1: Checkpoint                | :white_check_mark: |  **_16.0 / 16.0_**  |
 | Project 1: Data Structures           |                    |                     |
 | Project 1: Data Structures EC        |                    |                     |
 | Project 2: Gitlet (Checkpoint)       |                    |                     |

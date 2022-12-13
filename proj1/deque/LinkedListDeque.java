@@ -1,12 +1,14 @@
 package deque;
 
+import afu.org.checkerframework.checker.oigj.qual.O;
+
 import java.util.Iterator;
 /**
  * Implement a circular LinkedListDeque from scratch.
  *  @author Michael Chou
  */
 
-public class LinkedListDeque<T> implements Iterable<T> {
+public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     private class Node {
         public T item;
         public Node next;
@@ -45,6 +47,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Add an item to the front of the deque
      * @param item
      */
+    @Override
     public void addFirst(T item) {
         size += 1;
         sentinel.next = new Node(item, sentinel.next, sentinel);
@@ -55,22 +58,18 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Add an item to the back of the deque
      * @param item
      */
+    @Override
     public void addLast(T item) {
         size += 1;
         sentinel.prev.next = new Node(item, sentinel, sentinel.prev);
         sentinel.prev = sentinel.prev.next;
     }
 
-    /**
-     * @return whether the deque is empty
-     */
-    public boolean isEmpty() {
-        return size == 0;
-    }
 
     /**
      * @return how many items in the deque
      */
+    @Override
     public int size() {
         return size;
     }
@@ -79,6 +78,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Print the deque from first to last, separated from white space.
      * Once all the items have been printed, print out a new line.
      */
+    @Override
     public void printDeque() {
         Node f = sentinel.next;
         for (int i = 0; i < size; i++) {
@@ -93,6 +93,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * If no such item exists, return null
      * @return removeItem or null
      */
+    @Override
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -111,6 +112,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * If no such item exists, return null
      * @return removeItem or null
      */
+    @Override
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -132,6 +134,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * @param index
      * @return item or null
      */
+    @Override
     public T get(int index) {
         if (index < 0 || index >= size) {
             return null;
@@ -180,6 +183,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Make objects in the deque iterable
      * @return iterator
      */
+    @Override
     public Iterator<T> iterator() {
         return new DequeIterator();
     }

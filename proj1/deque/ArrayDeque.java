@@ -7,7 +7,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T>{
+public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
     private int size, nextFirst, nextLast;
     private T[] items;
 
@@ -25,6 +25,7 @@ public class ArrayDeque<T> implements Iterable<T>{
      * Add an item to the front of the deque
      * @param item
      */
+    @Override
     public void addFirst(T item) {
         if (size == items.length) {
             resize(size * 2);
@@ -40,6 +41,7 @@ public class ArrayDeque<T> implements Iterable<T>{
      * Add an item to the back of the deque
      * @param item
      */
+    @Override
     public void addLast(T item) {
         if (size == items.length) {
             resize(size * 2);
@@ -81,16 +83,11 @@ public class ArrayDeque<T> implements Iterable<T>{
         }
     }
 
-    /**
-     * @return whether the deque is empty
-     */
-    public boolean isEmpty() {
-        return size == 0;
-    }
 
     /**
      * @return how many items in the deque
      */
+    @Override
     public int size() {
         return size;
     }
@@ -99,6 +96,7 @@ public class ArrayDeque<T> implements Iterable<T>{
      * Print the deque from first to last, separated from white space.
      * Once all the items have been printed, print out a new line.
      */
+    @Override
     public void printDeque() {
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null) {
@@ -113,6 +111,7 @@ public class ArrayDeque<T> implements Iterable<T>{
      * If no such item exists, return null
      * @return removeItem or null
      */
+    @Override
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -140,6 +139,7 @@ public class ArrayDeque<T> implements Iterable<T>{
      * If no such item exists, return null
      * @return removeItem or null
      */
+    @Override
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -170,6 +170,7 @@ public class ArrayDeque<T> implements Iterable<T>{
      * @param index
      * @return item or null
      */
+    @Override
     public T get(int index) {
         if (index < 0 || index >= items.length) {
             return null;
@@ -185,6 +186,7 @@ public class ArrayDeque<T> implements Iterable<T>{
      * Make objects in the deque iterable
      * @return iterator
      */
+    @Override
     public Iterator<T> iterator() {
         return new DequeIterator();
     }

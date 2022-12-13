@@ -30,8 +30,8 @@ public class TestBuggyAList {
     }
 
     @Test
-    public void randomizedTest() {
-        AListNoResizing<Integer> correct = new AListNoResizing<>();
+    public void randomizedTest(){
+        BuggyAList<Integer> correct = new BuggyAList<>();
         BuggyAList<Integer> broken = new BuggyAList<>();
 
         int N = 5000;
@@ -40,23 +40,20 @@ public class TestBuggyAList {
             if (operationNumber == 0) {
                 // addLast
                 int randVal = StdRandom.uniform(0, 100);
+                correct.addLast(randVal);
                 broken.addLast(randVal);
+
+                assertEquals(correct.getLast(), broken.getLast());
             } else if (operationNumber == 1) {
-                // getLast
-                if (broken.size() != 0) {
-                    int b_last = broken.getLast();
-                }
+                // size
+                assertEquals(correct.size(), broken.size());
             } else if (operationNumber == 2) {
-                // get
-                if (broken.size() != 0) {
-                    int randIndex = StdRandom.uniform(0, broken.size());
-                    int b_get = broken.get(randIndex);
-                }
-            } else if (operationNumber == 3){
+                // getLast
+                assertEquals(correct.getLast(), broken.getLast());
+
+            } else if (operationNumber == 3) {
                 // removeLast
-                if (broken.size() != 0){
-                    int b_remove = broken.removeLast();
-                }
+                assertEquals(correct.removeLast(), broken.removeLast());
             }
         }
     }

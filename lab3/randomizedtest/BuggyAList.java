@@ -44,6 +44,9 @@ public class BuggyAList<Item> {
 
     /** Returns the item from the back of the list. */
     public Item getLast() {
+        if (size == 0) {
+            return null;
+        }
         return items[size - 1];
     }
     /** Gets the ith item in the list (0 is the front). */
@@ -59,6 +62,9 @@ public class BuggyAList<Item> {
     /** Deletes item from back of the list and
       * returns deleted item. */
     public Item removeLast() {
+        if (size == 0) {
+            return null;
+        }
         if ((size < items.length / 4) && (size > 4)) {
             resize(size * 2);
         }

@@ -217,58 +217,20 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         if (o == null) {
             return false;
         }
-        if (!(o instanceof LinkedListDeque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
-        LinkedListDeque<T> other = (LinkedListDeque<T>) o;
+        Deque<T> other = (Deque<T>) o;
         if (other.size() != this.size()) {
             return false;
         }
 
-        if (!listEqual(other)) {
-            return false;
+        for (int i = 0; i < size(); i++) {
+            if (!this.get(i).equals(other.get(i))) {
+                return false;
+            }
         }
 
         return true;
     }
-
-    /**
-     * Private helper method for equals
-     * @param o
-     * @return whether two linkedListDeque are equal
-     */
-    private boolean listEqual(LinkedListDeque o) {
-        Node h1 = this.sentinel;
-        Node h2 = o.sentinel;
-
-        while (h1.next.item != null) {
-            if (!h1.next.item.equals(h2.next.item)) {
-                return false;
-            }
-            h1 = h1.next;
-            h2 = h2.next;
-        }
-        return true;
-    }
-
-    /*
-    //Use another instanceof way to override equals method
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o instanceof LinkedListDeque lld2) {
-            if (this.size() != lld2.size()) {
-                return false;
-            }
-            if (!ListEqual(lld2)) {
-                return false;
-            }
-
-            return true;
-        }
-        return false;
-    }
-    */
 }

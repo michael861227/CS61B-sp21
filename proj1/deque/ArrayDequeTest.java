@@ -161,5 +161,8 @@ public class ArrayDequeTest {
         b.addLast("Day!");
 
         assertEquals("Two object's content should be the same", a, b);
+
+        a.addLast("No");
+        assertNotEquals("Two object should not be the same",a, b);
     }
 }

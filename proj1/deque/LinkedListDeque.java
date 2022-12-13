@@ -1,7 +1,5 @@
 package deque;
 
-import afu.org.checkerframework.checker.oigj.qual.O;
-
 import java.util.Iterator;
 /**
  * Implement a circular LinkedListDeque from scratch.
@@ -10,9 +8,9 @@ import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     private class Node {
-        public T item;
-        public Node next;
-        public Node prev;
+        private T item;
+        private Node next;
+        private Node prev;
 
         /**
          * Create for new Node
@@ -20,7 +18,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
          * @param n
          * @param p
          */
-        public Node (T i, Node n, Node p) {
+        public Node(T i, Node n, Node p) {
             item = i;
             next = n;
             prev = p;
@@ -29,7 +27,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         /**
          *  Create for sentinel Node
          */
-        public Node(){
+        public Node() {
             this.next = this;
             this.prev = this;
         }
@@ -227,7 +225,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
             return false;
         }
 
-        if (!ListEqual(other)) {
+        if (!listEqual(other)) {
             return false;
         }
 
@@ -239,7 +237,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
      * @param o
      * @return whether two linkedListDeque are equal
      */
-    private boolean ListEqual(LinkedListDeque o) {
+    private boolean listEqual(LinkedListDeque o) {
         Node h1 = this.sentinel;
         Node h2 = o.sentinel;
 

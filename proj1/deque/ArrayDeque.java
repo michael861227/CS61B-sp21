@@ -7,7 +7,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
+public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private int size, nextFirst, nextLast;
     private T[] items;
 
@@ -127,7 +127,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         size -= 1;
 
         // Check for ArrayDeque's usage factor
-        if (items.length >= 16 && (double)size / items.length < 0.25) {
+        if (items.length >= 16 && (double) size / items.length < 0.25) {
             resize(items.length / 2);
         }
 
@@ -155,7 +155,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         size -= 1;
 
         // Check for ArrayDeque's usage factor
-        if (items.length >= 16 && (double)size / items.length < 0.25) {
+        if (items.length >= 16 && (double) size / items.length < 0.25) {
             resize(items.length / 2);
         }
 
@@ -232,7 +232,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         if (o == null) {
             return false;
         }
-        if (! (o instanceof ArrayDeque)) {
+        if (!(o instanceof ArrayDeque)) {
             return false;
         }
 

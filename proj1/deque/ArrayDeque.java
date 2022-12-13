@@ -71,9 +71,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             items = temp;
             nextLast = size;
             nextFirst = items.length - 1;
-        }
-        // ArrayDeque is fulled
-        else {
+        } else { // ArrayDeque is fulled
             int lastTotal = size - nextLast;
             System.arraycopy(items, nextLast, temp, 0, lastTotal);
             System.arraycopy(items, 0, temp, lastTotal, nextFirst + 1);
@@ -193,7 +191,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     private class DequeIterator implements Iterator<T> {
         private int count, pos;
-        public DequeIterator() {
+        DequeIterator() {
             count = 0;
             pos = 0;
         }

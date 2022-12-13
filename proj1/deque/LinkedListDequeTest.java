@@ -1,5 +1,6 @@
 package deque;
 
+import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -44,30 +45,26 @@ public class LinkedListDequeTest {
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
         LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
-		// should be empty
-		assertTrue("lld1 should be empty upon initialization", lld1.isEmpty());
+        int temp;
 
-		lld1.addFirst(10);
-		// should not be empty
-		assertFalse("lld1 should contain 1 item", lld1.isEmpty());
+        lld1.addFirst(0);
+        lld1.addFirst(1);
+        lld1.addFirst(2);
+        lld1.addFirst(3);
+        lld1.addFirst(4);
 
-		lld1.removeFirst();
-		// should be empty
-		assertTrue("lld1 should be empty after removal", lld1.isEmpty());
+        temp = lld1.removeLast();
+        assertEquals(0, temp);
 
-        lld1.addLast(20);
-        assertFalse("lld1 should contain 1 item", lld1.isEmpty());
-
-        lld1.removeLast();
-        assertTrue("lld1 should be empty after removal", lld1.isEmpty());
-
+        lld1.addFirst(6);
+        lld1.addFirst(7);
+        lld1.addFirst(8);
+        lld1.addFirst(9);
         lld1.addFirst(10);
-        lld1.addLast(50);
-        lld1.addLast(30);
-        lld1.removeLast();
-        assertEquals(2, lld1.size());
 
-        lld1.printDeque();
+        temp = lld1.removeLast();
+        assertEquals(1, temp);
+
     }
 
     @Test
@@ -182,5 +179,29 @@ public class LinkedListDequeTest {
 
         assertEquals("Two object's content should be the same", a, b);
 
+    }
+
+    @Test
+    public void randomTest() {
+        LinkedListDeque<Integer> a = new LinkedListDeque<>();
+        ArrayDeque<Integer> b = new ArrayDeque<>();
+        int N = 50;
+        for (int i = 0; i < N; i++) {
+            int operationNumber = StdRandom.uniform(0, 3);
+            // addFirst
+            if (operationNumber == 0) {
+                int randVal = StdRandom.uniform(0, 100);
+                a.addFirst(randVal);
+                b.addFirst(randVal);
+            }
+            // removeLast
+            else if (operationNumber == 1) {
+                assertEquals("Two value should be the same" ,a.removeLast(), b.removeLast());
+            }
+            // isEmpty
+            else if (operationNumber == 2) {
+                assertEquals(a.isEmpty(), b.isEmpty());
+            }
+        }
     }
 }

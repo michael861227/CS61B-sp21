@@ -18,7 +18,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
          * @param n
          * @param p
          */
-        public Node(T i, Node n, Node p) {
+        Node(T i, Node n, Node p) {
             item = i;
             next = n;
             prev = p;
@@ -27,7 +27,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         /**
          *  Create for sentinel Node
          */
-        public Node() {
+        Node() {
             this.next = this;
             this.prev = this;
         }
@@ -49,7 +49,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     public void addFirst(T item) {
         size += 1;
         sentinel.next = new Node(item, sentinel.next, sentinel);
-        sentinel.prev.prev = sentinel.next;
+        sentinel.next.next.prev = sentinel.next;
     }
 
     /**
@@ -189,7 +189,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     private class DequeIterator implements Iterator<T> {
         private int pos;
 
-        public DequeIterator() {
+        DequeIterator() {
             pos = 0;
         }
         @Override

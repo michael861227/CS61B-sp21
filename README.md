@@ -24,7 +24,7 @@ Lecture Code: [Berkeley-CS61B/lectureCode-fa22](https://github.com/Berkeley-CS61
 | ------------------------------------------------------------------------------------------------ | :-----------------------: | :------: | :----------------: | :-----------------: |
 | [Project 0: 2048](https://sp21.datastructur.es/materials/proj/proj0/proj0)                       |  [:link: link](./proj0/)  | 22/08/16 | :white_check_mark: | **_640.0 / 640.0_** |
 | [Project 1: Data Structures](https://sp21.datastructur.es/materials/proj/proj1/proj1)            |  [:link: link](./proj1/)  | 22/12/13 | :white_check_mark: | **_640.0 / 640.0_** |
-| [Project 1 Extra Credit: Autograding](https://sp21.datastructur.es/materials/proj/proj1/proj1ec) | [:link: link](./proj1ec/) |          |                    |                     |
+| [Project 1 Extra Credit: Autograding](https://sp21.datastructur.es/materials/proj/proj1/proj1ec) | [:link: link](./proj1ec/) | 22/12/14 | :white_check_mark: |  **_32.0 / 32.0_**  |
 | [Project 2: Gitlet](https://sp21.datastructur.es/materials/proj/proj2/proj2)                     |  [:link: link](./proj2/)  |          |                    |                     |
 | [Project 3: Game Sharing](https://sp21.datastructur.es/materials/proj/proj3/proj3)               |  [:link: link](./proj3/)  |          |                    |                     |
 
@@ -59,7 +59,7 @@ Lecture Code: [Berkeley-CS61B/lectureCode-fa22](https://github.com/Berkeley-CS61
 | Project 0: 2048                      | :white_check_mark: | **_640.0 / 640.0_** |
 | Project 1: Checkpoint                | :white_check_mark: |  **_16.0 / 16.0_**  |
 | Project 1: Data Structures           | :white_check_mark: | **_640.0 / 640.0_** |
-| Project 1: Data Structures EC        |                    |                     |
+| Project 1: Data Structures EC        | :white_check_mark: |  **_32.0 / 32.0_**  |
 | Project 2: Gitlet (Checkpoint)       |                    |                     |
 | Project 2: Gitlet                    |                    |                     |
 | Project 3 Part I: World Generation   |                    |                     |

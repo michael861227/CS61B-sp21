@@ -1,26 +1,24 @@
 package bstmap;
 
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
     private class BSTNode {
         private BSTNode left, right;
-        private final K key;
+        private K key;
         private V val;
 
-        private int size;
-
-        public BSTNode(K key, V val, int size) {
+        public BSTNode(K key, V val) {
             this.key = key;
             this.val = val;
-            this.size = size;
         }
     }
 
     private BSTNode root;
+    private int size;
 
     public BSTMap() {
+        size = 0;
         root = null;
     }
 
@@ -29,6 +27,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      * */
     @Override
     public void clear() {
+        size = 0;
         root = null;
     }
 
@@ -89,15 +88,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      */
     @Override
     public int size() {
-        return size(root);
-    }
-
-    private int size(BSTNode root) {
-        if (root == null) {
-            return 0;
-        }
-
-        return size(root.left) + size(root.right) + 1;
+        return size;
     }
 
     /**
@@ -114,7 +105,8 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
 
     private BSTNode put(BSTNode root, K key, V value) {
         if (root == null) {
-            return new BSTNode(key, value, 1);
+            size += 1;
+            return new BSTNode(key, value);
         }
 
         int cmp = key.compareTo(root.key);
@@ -126,10 +118,6 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
             root.right = put(root.right, key, value);
         }
 
-        if (cmp != 0) {
-            root.size = size(root.left) + size(root.right) + 1;
-        }
-
         return root;
     }
 
@@ -139,7 +127,12 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      */
     @Override
     public Set<K> keySet() {
-        throw new UnsupportedOperationException();
+        Set<K> set = new HashSet<>();
+        for (K key: this) {
+            set.add(key);
+        }
+
+        return set;
     }
 
     /**
@@ -149,7 +142,73 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      */
     @Override
     public V remove(K key) {
-        throw new UnsupportedOperationException();
+        if (key == null) {
+            throw new IllegalArgumentException("Cannot called remove() with a null key.");
+        }
+
+        if (!containsKey(key)) {
+            return null;
+        }
+
+        V removeVal = get(key);
+        root = remove(root, key);
+
+        return removeVal;
+    }
+
+    /**
+     * Hibbard deletion
+     * Replace the remove node with its successor.
+     */
+    private BSTNode remove(BSTNode root, K key) {
+        if (root == null) {
+            return null;
+        }
+
+        int cmp = key.compareTo(root.key);
+        if (cmp < 0) {
+            root.left = remove(root.left, key);
+        } else if (cmp > 0) {
+            root.right = remove(root.right, key);
+        } else {
+            if (root.right == null) {
+                size -= 1;
+                return root.left;
+            }
+            if (root.left == null) {
+                size -= 1;
+                return root.right;
+            }
+
+            size -= 1;
+            BSTNode succ = findSuccessor(root);
+            root.key = succ.key;
+            root.val = succ.val;
+
+        }
+
+        return root;
+    }
+
+    private BSTNode findSuccessor(BSTNode root) {
+        BSTNode curr = root.right;
+
+        while (curr.left != null) {
+            root = curr;
+            curr = curr.left;
+        }
+
+        if (curr == root.right) {
+            root.right = curr.right;
+        } else {
+            if (curr.right != null) {
+                root.left = curr.right;
+            } else {
+                root.left = null;
+            }
+        }
+
+        return curr;
     }
 
     /**
@@ -159,12 +218,58 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      */
     @Override
     public V remove(K key, V value) {
-        throw new UnsupportedOperationException();
+        if (key == null) {
+            throw new IllegalArgumentException("Cannot called remove() with a null key.");
+        }
+
+        if (!containsKey(key)) {
+            return null;
+        }
+
+        V removeVal = get(key);
+
+        // Check for the specific value
+        if (removeVal.equals(value)) {
+            remove(key);
+        }
+
+        return null;
     }
 
+    /**
+     * Return an iterator over the keys
+     */
     @Override
     public Iterator<K> iterator() {
-        throw new UnsupportedOperationException();
+        return new BSTMapIterator();
+    }
+
+    private class BSTMapIterator implements Iterator<K> {
+        private List<BSTNode> list;
+
+        public BSTMapIterator() {
+            list = new LinkedList<>();
+            list.add(root);
+        }
+        @Override
+        public boolean hasNext() {
+            return !list.isEmpty();
+        }
+
+        @Override
+        public K next() {
+            BSTNode node = list.remove(0);
+
+            if (node.left != null) {
+                list.add(node.left);
+            }
+
+            if (node.right != null) {
+                list.add(node.right);
+            }
+
+            return node.key;
+        }
     }
 
     /**

@@ -40,11 +40,11 @@ public class TestBSTMapExtra {
     @Test
     public void testRemoveRoot() {
         BSTMap<String,String> q = new BSTMap<String,String>();
-        q.put("c","a");
-        q.put("b","a");
-        q.put("a","a");
-        q.put("d","a");
-        q.put("e","a"); // a b c d e
+        q.put("c", "a");
+        q.put("b", "a");
+        q.put("a", "a");
+        q.put("d", "a");
+        q.put("e", "a"); // a b c d e
         assertTrue(null != q.remove("c"));
         assertFalse(q.containsKey("c"));
         assertTrue(q.containsKey("a"));
@@ -59,11 +59,11 @@ public class TestBSTMapExtra {
     @Test
     public void testRemoveThreeCases() {
         BSTMap<String,String> q = new BSTMap<String,String>();
-        q.put("c","a");
-        q.put("b","a");
-        q.put("a","a");
-        q.put("d","a");
-        q.put("e","a");                         // a b c d e
+        q.put("c", "a");
+        q.put("b", "a");
+        q.put("a", "a");
+        q.put("d", "a");
+        q.put("e", "a");                         // a b c d e
         assertTrue(null != q.remove("e"));      // a b c d
         assertTrue(q.containsKey("a"));
         assertTrue(q.containsKey("b"));
@@ -85,7 +85,7 @@ public class TestBSTMapExtra {
     *  when the node has only 1 or 0 children on either side. */
     @Test
     public void testRemoveRootEdge() {
-        BSTMap rightChild = new BSTMap();
+        BSTMap<Character, Integer> rightChild = new BSTMap();
         rightChild.put('A', 1);
         rightChild.put('B', 2);
         Integer result = (Integer) rightChild.remove('A');

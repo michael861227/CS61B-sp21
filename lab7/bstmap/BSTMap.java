@@ -170,17 +170,17 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
     /**
      * Prints out BSTMap in order of increasing Key.
      */
-    public void printInorder() {
-        printInorder(root);
+    public void printInOrder() {
+        printInOrder(root);
     }
 
-    private void printInorder(BSTNode root) {
+    private void printInOrder(BSTNode root) {
         if (root == null) {
             System.out.println("The BSTMap is empty.");
         }
 
-        printInorder(root.left);
+        printInOrder(root.left);
         System.out.println(root.key.toString() + "->" + root.val.toString());
-        printInorder(root.right);
+        printInOrder(root.right);
     }
 }

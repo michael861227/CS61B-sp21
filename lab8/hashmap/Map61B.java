@@ -7,10 +7,14 @@ import java.util.Set;
  * declaration, though you can use other formal type parameters if you'd like.
  */
 public interface Map61B<K, V> extends Iterable<K> {
-    /** Removes all of the mappings from this map. */
+    /**
+     * Removes all of the mappings from this map.
+     */
     void clear();
 
-    /** Returns true if this map contains a mapping for the specified key. */
+    /**
+     * Returns true if this map contains a mapping for the specified key.
+     */
     boolean containsKey(K key);
 
     /**
@@ -19,7 +23,9 @@ public interface Map61B<K, V> extends Iterable<K> {
      */
     V get(K key);
 
-    /** Returns the number of key-value mappings in this map. */
+    /**
+     * Returns the number of key-value mappings in this map.
+     */
     int size();
 
     /**
@@ -29,7 +35,9 @@ public interface Map61B<K, V> extends Iterable<K> {
      */
     void put(K key, V value);
 
-    /** Returns a Set view of the keys contained in this map. */
+    /**
+     * Returns a Set view of the keys contained in this map.
+     */
     Set<K> keySet();
 
     /**

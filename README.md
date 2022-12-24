@@ -39,7 +39,7 @@ Lecture Code: [Berkeley-CS61B/lectureCode-fa22](https://github.com/Berkeley-CS61
 | [Lab 5: Project 1 Peer Code Review](https://sp21.datastructur.es/materials/lab/lab5/lab5)                   | [:link: link](./lab5/) | 22/12/08 | :white_check_mark: |    **_NONE_**     |
 | [Lab 6: Getting Started on Project 2](https://sp21.datastructur.es/materials/lab/lab6/lab6)                 | [:link: link](./lab6/) |          |                    |                   |
 | [Lab 7: BSTMap](https://sp21.datastructur.es/materials/lab/lab7/lab7)                                       | [:link: link](./lab7/) | 22/12/20 | :white_check_mark: | **_64.0 / 64.0_** |
-| [Lab 8: HashMap](https://sp21.datastructur.es/materials/lab/lab8/lab8)                                      | [:link: link](./lab8/) |          |                    |                   |
+| [Lab 8: HashMap](https://sp21.datastructur.es/materials/lab/lab8/lab8)                                      | [:link: link](./lab8/) | 22/12/24 | :white_check_mark: | **_64.0 / 64.0_** |
 
 ## Autograder Dashboard
 
@@ -53,7 +53,7 @@ Lecture Code: [Berkeley-CS61B/lectureCode-fa22](https://github.com/Berkeley-CS61
 | Lab 4B: Git Exercise Part B          | :white_check_mark: |  **_16.0 / 16.0_**  |
 | Lab 6: Getting Started on Project 2  |                    |                     |
 | Lab 7: BST Map                       | :white_check_mark: |  **_64.0 / 64.0_**  |
-| Lab 8: Hash Map                      |                    |                     |
+| Lab 8: Hash Map                      | :white_check_mark: |  **_64.0 / 64.0_**  |
 | Lab 12: Getting Started on Project 3 |                    |                     |
 | HW2: Conceptual Review               |                    |                     |
 | Project 0: 2048                      | :white_check_mark: | **_640.0 / 640.0_** |

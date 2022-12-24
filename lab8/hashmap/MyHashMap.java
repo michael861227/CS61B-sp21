@@ -38,11 +38,11 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * Constructors
      */
     public MyHashMap() {
-        InitialMyHashMap(16, 0.75);
+        initializeMyHashMap(16, 0.75);
     }
 
     public MyHashMap(int initialSize) {
-        InitialMyHashMap(initialSize, 0.75);
+        initializeMyHashMap(initialSize, 0.75);
     }
 
     /**
@@ -53,10 +53,10 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * @param maxLoad maximum load factor
      */
     public MyHashMap(int initialSize, double maxLoad) {
-        InitialMyHashMap(initialSize, maxLoad);
+        initializeMyHashMap(initialSize, maxLoad);
     }
 
-    private void InitialMyHashMap(int initialSize, double maxLoad) {
+    private void initializeMyHashMap(int initialSize, double maxLoad) {
         capacity = initialSize;
         loadFactor = maxLoad;
         buckets = createTable(capacity);
@@ -108,9 +108,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
         return table;
     }
-
-    // TODO: Implement the methods of the Map61B Interface below
-    // Your code won't compile until you do so!
 
     /**
      * Removes all of the mappings from this map.
@@ -190,9 +187,9 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         }
     }
 
-    private void resize(int capacity) {
+    private void resize(int newCapacity) {
         List<Node> list = getAllNode();
-        InitialMyHashMap(capacity, this.loadFactor);
+        initializeMyHashMap(newCapacity, this.loadFactor);
         for (Node item: list) {
             index = Math.floorMod(item.key.hashCode(), capacity);
             buckets[index].add(createNode(item.key, item.value));

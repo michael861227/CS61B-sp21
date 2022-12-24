@@ -225,7 +225,25 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public V remove(K key) {
-        throw new UnsupportedOperationException();
+        if (key == null) {
+            throw new IllegalArgumentException("Cannot remove() a null key from HashMap.");
+        }
+
+        if (!containsKey(key)) {
+            return null;
+        }
+
+        index = Math.floorMod(key.hashCode(), capacity);
+
+        for (Node item: buckets[index]) {
+            if (item.key.equals(key)) {
+                buckets[index].remove(item);
+                size -= 1;
+                return item.value;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -235,7 +253,20 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public V remove(K key, V value) {
-        throw new UnsupportedOperationException();
+        if (key == null) {
+            throw new IllegalArgumentException("Cannot remove() a null key from HashMap.");
+        }
+
+        if (!containsKey(key)) {
+            return null;
+        }
+
+        V val = get(key);
+        if (val.equals(value)) {
+            remove(key);
+        }
+
+        return null;
     }
 
     @Override

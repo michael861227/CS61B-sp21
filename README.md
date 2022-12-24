@@ -56,7 +56,7 @@ Lecture Code: [Berkeley-CS61B/lectureCode-fa22](https://github.com/Berkeley-CS61
 | Lab 7: BST Map                       | :white_check_mark: |  **_64.0 / 64.0_**  |
 | Lab 8: Hash Map                      | :white_check_mark: |  **_64.0 / 64.0_**  |
 | Lab 12: Getting Started on Project 3 |                    |                     |
-| HW2: Conceptual Review               |                    |                     |
+| HW2: Conceptual Review               | :white_check_mark: |   **_- / 160.0_**   |
 | Project 0: 2048                      | :white_check_mark: | **_640.0 / 640.0_** |
 | Project 1: Checkpoint                | :white_check_mark: |  **_16.0 / 16.0_**  |
 | Project 1: Data Structures           | :white_check_mark: | **_640.0 / 640.0_** |
